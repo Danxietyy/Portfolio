@@ -88,29 +88,6 @@
             box-shadow: 0 12px 30px -10px rgba(99, 102, 241, 0.25);
         }
 
-        .glow-effect {
-            position: relative;
-        }
-
-        .glow-effect::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, #6366f1, #a855f7, #06b6d4, #6366f1);
-            border-radius: inherit;
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-            filter: blur(10px);
-        }
-
-        .glow-effect:hover::before {
-            opacity: 0.6;
-        }
-
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
@@ -132,16 +109,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-
-        /* Markdown Render Styling Simulation */
-        .markdown-preview h1 { font-size: 1.75rem; font-weight: 800; margin-bottom: 0.75rem; color: #fff; border-bottom: 1px solid #1E293B; padding-bottom: 0.5rem; }
-        .markdown-preview h2 { font-size: 1.35rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #E2E8F0; border-bottom: 1px solid #1E293B; padding-bottom: 0.25rem; }
-        .markdown-preview h3 { font-size: 1.1rem; font-weight: 600; margin-top: 1.25rem; margin-bottom: 0.5rem; color: #CBD5E1; }
-        .markdown-preview p { font-size: 0.95rem; margin-bottom: 0.75rem; color: #94A3B8; leading-height: 1.6; }
-        .markdown-preview ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; color: #94A3B8; }
-        .markdown-preview li { margin-bottom: 0.25rem; }
-        .markdown-preview code { font-family: 'JetBrains Mono', monospace; background: rgba(30, 41, 59, 0.8); padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-size: 0.85rem; color: #818CF8; }
-        .markdown-preview hr { border-color: #1E293B; margin: 1.5rem 0; }
     </style>
 </head>
 <body class="font-sans antialiased text-gray-200 min-h-screen flex flex-col">
@@ -162,19 +129,9 @@
                 </div>
             </a>
 
-            <!-- Navigation Mode Switcher -->
-            <div class="flex items-center bg-dark-card p-1 rounded-xl border border-gray-800 shadow-inner">
-                <button id="view-portfolio-btn" onclick="switchView('portfolio')" class="flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold transition-all duration-200 bg-brand-600 text-white shadow-md">
-                    <i class="fas fa-globe text-sm"></i>
-                    <span class="hidden md:inline">Live Web Portfolio</span>
-                    <span class="md:hidden">Portfolio</span>
-                </button>
-                
-            </div>
-
             <!-- Quick Action Links -->
-            <div class="hidden lg:flex items-center gap-3">
-                <a href="https://github.com/Danxietyy-" target="_blank" rel="noopener" class="px-4 py-2 text-xs font-semibold rounded-xl glass-card hover:bg-gray-800 text-gray-200 flex items-center gap-2 border border-gray-700/60">
+            <div class="flex items-center gap-3">
+                <a href="https://github.com/Danxietyy/Danxietyy-" target="_blank" rel="noopener" class="px-4 py-2 text-xs font-semibold rounded-xl glass-card hover:bg-gray-800 text-gray-200 flex items-center gap-2 border border-gray-700/60">
                     <i class="fab fa-github text-base text-gray-300"></i>
                     <span>GitHub Profile</span>
                 </a>
@@ -189,25 +146,21 @@
             
             <!-- Hero Section -->
             <section class="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden">
-                <!-- Background Glowing Orbs -->
                 <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-brand-500/15 rounded-full blur-3xl pointer-events-none"></div>
                 <div class="absolute top-1/3 right-10 w-72 h-72 bg-accent-purple/10 rounded-full blur-3xl pointer-events-none"></div>
 
                 <div class="grid lg:grid-cols-12 gap-12 items-center relative z-10">
                     <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
                         
-                        <!-- Status Badge -->
                         <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/30 text-brand-400 text-xs font-mono">
                             <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                             <span>BSIT Student • Lead Game & Graphics Designer</span>
                         </div>
 
-                        <!-- Typing Header -->
                         <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
                             Building Software Systems & <span class="gradient-text">Immersive 3D Worlds</span>
                         </h1>
 
-                        <!-- Dynamic Animated Subtitle -->
                         <div class="h-8 font-mono text-base sm:text-lg text-brand-400 flex items-center justify-center lg:justify-start gap-2">
                             <span class="text-gray-500">&gt;</span>
                             <span id="typing-text" class="border-r-2 border-brand-400 pr-1 font-semibold"></span>
@@ -217,19 +170,19 @@
                             Hi, I'm <strong>Jordan Batinga</strong> from San Felipe, Zambales, Philippines. A BSIT Student combining software development, structured C++/web applications, 3D character asset modeling, and game graphics design.
                         </p>
 
-                        <!-- CTA Buttons -->
+                        <!-- CTA Buttons including GitHub README link -->
                         <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
                             <a href="#projects" class="px-6 py-3.5 text-sm font-semibold rounded-xl bg-brand-600 hover:bg-brand-500 text-white transition-all shadow-lg shadow-brand-500/30 flex items-center gap-2 group">
                                 <span>Explore Projects</span>
                                 <i class="fas fa-arrow-down text-xs group-hover:translate-y-1 transition-transform"></i>
                             </a>
-                            <button onclick="switchView('readme')" class="px-6 py-3.5 text-sm font-semibold rounded-xl glass-card hover:bg-gray-800/80 text-gray-200 transition-all border border-gray-700/80 flex items-center gap-2">
+                            <a href="https://github.com/Danxietyy/Danxietyy-" target="_blank" rel="noopener" class="px-6 py-3.5 text-sm font-semibold rounded-xl glass-card hover:bg-gray-800/80 text-gray-200 transition-all border border-gray-700/80 flex items-center gap-2">
                                 <i class="fab fa-github text-brand-400"></i>
-                                <span>Get GitHub Profile README</span>
-                            </button>
+                                <span>GitHub README</span>
+                            </a>
                         </div>
 
-                        <!-- Quick Tech Highlights Bar -->
+                        <!-- Tech Highlights Bar -->
                         <div class="pt-8 border-t border-gray-800/80 grid grid-cols-2 sm:grid-cols-4 gap-4 text-left">
                             <div class="p-3 rounded-xl bg-dark-card/50 border border-gray-800">
                                 <div class="text-xs text-gray-400 font-mono">Major</div>
@@ -244,17 +197,15 @@
                                 <div class="text-sm font-bold text-white mt-0.5">Blender & Prisma</div>
                             </div>
                             <div class="p-3 rounded-xl bg-dark-card/50 border border-gray-800">
-                                <div class="text-xs text-gray-400 font-mono">Rank</div>
-                                <div class="text-sm font-bold text-emerald-400 mt-0.5">Immortal (ML)</div>
+                                <div class="text-xs text-gray-400 font-mono">Pixel Editors</div>
+                                <div class="text-sm font-bold text-white mt-0.5">Aseprite & Pyxel Edit</div>
                             </div>
                         </div>
 
                     </div>
 
-                    <!-- Hero Visual Card -->
                     <div class="lg:col-span-5 relative">
-                        <div class="glass-panel p-6 rounded-3xl border border-gray-800 shadow-2xl relative animate-float">
-                            <!-- Card Header -->
+                        <div class="glass-panel p-6 rounded-3xl border border-gray-800 shadow-2xl relative">
                             <div class="flex items-center justify-between pb-4 border-b border-gray-800 mb-6">
                                 <div class="flex items-center gap-3">
                                     <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-brand-600 to-accent-purple flex items-center justify-center text-white text-xl font-bold shadow-md">
@@ -268,7 +219,6 @@
                                 <span class="px-2.5 py-1 text-[10px] font-mono font-bold rounded-md bg-brand-500/20 text-brand-300 border border-brand-500/30">ONLINE</span>
                             </div>
 
-                            <!-- Interactive Tech Badges -->
                             <div class="space-y-3 font-mono text-xs">
                                 <div class="p-3 rounded-xl bg-dark-bg/80 border border-gray-800/80 flex items-center justify-between">
                                     <span class="text-gray-400 flex items-center gap-2">
@@ -290,15 +240,14 @@
                                 </div>
                                 <div class="p-3 rounded-xl bg-dark-bg/80 border border-gray-800/80 flex items-center justify-between">
                                     <span class="text-gray-400 flex items-center gap-2">
-                                        <i class="fas fa-database text-accent-pink"></i> Systems Focus
+                                        <i class="fas fa-wand-magic-sparkles text-accent-pink"></i> MMORPG Design
                                     </span>
-                                    <span class="text-gray-200 font-semibold">File Persistence & CLI</span>
+                                    <span class="text-gray-200 font-semibold">Aseprite & Pyxel Edit</span>
                                 </div>
                             </div>
 
-                            <!-- Quick Bio Quote -->
                             <div class="mt-6 p-4 rounded-xl bg-brand-900/20 border border-brand-500/20 text-xs text-gray-300 italic leading-relaxed">
-                                "Combining software engineering principles with creative 3D artistry and game design."
+                                "Combining software engineering principles with Aseprite pixel art cosmetics and 3D design."
                             </div>
                         </div>
                     </div>
@@ -312,7 +261,6 @@
                         <h2 class="text-3xl font-bold text-white tracking-tight">Skills & Capabilities</h2>
                         <p class="text-gray-400 text-sm mt-2">Tools, engines, and programming languages applied across software building and game production.</p>
                         
-                        <!-- Skill Filter Buttons -->
                         <div class="flex flex-wrap justify-center gap-2 mt-6">
                             <button onclick="filterSkills('all')" class="skill-tab-btn active px-4 py-1.5 rounded-full text-xs font-semibold bg-brand-600 text-white transition-all">All Skills</button>
                             <button onclick="filterSkills('dev')" class="skill-tab-btn px-4 py-1.5 rounded-full text-xs font-semibold glass-card text-gray-400 hover:text-white transition-all">Programming</button>
@@ -321,10 +269,7 @@
                         </div>
                     </div>
 
-                    <!-- Skill Cards Grid -->
                     <div class="grid md:grid-cols-3 gap-6" id="skills-container">
-                        
-                        <!-- C++ & Programming Card -->
                         <div class="skill-item dev glass-card p-6 rounded-2xl">
                             <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center text-xl mb-4">
                                 <i class="fas fa-code"></i>
@@ -338,7 +283,6 @@
                             </div>
                         </div>
 
-                        <!-- Web Development Card -->
                         <div class="skill-item dev glass-card p-6 rounded-2xl">
                             <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center text-xl mb-4">
                                 <i class="fas fa-laptop-code"></i>
@@ -352,7 +296,6 @@
                             </div>
                         </div>
 
-                        <!-- 3D Art Card -->
                         <div class="skill-item 3d glass-card p-6 rounded-2xl">
                             <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center text-xl mb-4">
                                 <i class="fas fa-cubes"></i>
@@ -366,20 +309,19 @@
                             </div>
                         </div>
 
-                        <!-- Graphics & UI Card -->
                         <div class="skill-item 3d glass-card p-6 rounded-2xl">
                             <div class="w-12 h-12 rounded-xl bg-pink-500/10 border border-pink-500/20 text-pink-400 flex items-center justify-center text-xl mb-4">
-                                <i class="fas fa-paint-brush"></i>
+                                <i class="fas fa-wand-magic-sparkles"></i>
                             </div>
-                            <h3 class="text-lg font-bold text-white mb-2">Game Graphics & UI Design</h3>
-                            <p class="text-xs text-gray-400 leading-relaxed mb-4">Designing promotional event banners, dark fantasy UI overlays, and game icons for MMORPG title updates.</p>
+                            <h3 class="text-lg font-bold text-white mb-2">Pixel Editors & Cosmetics</h3>
+                            <p class="text-xs text-gray-400 leading-relaxed mb-4">Designing pixel game cosmetics, vanities, and character outfits using professional pixel software like Aseprite and Pyxel Edit.</p>
                             <div class="flex flex-wrap gap-2 font-mono text-[11px]">
-                                <span class="px-2.5 py-1 rounded-md bg-dark-bg border border-gray-800 text-accent-pink">Ibis Paint X</span>
-                                <span class="px-2.5 py-1 rounded-md bg-dark-bg border border-gray-800 text-accent-pink">UI/UX Assets</span>
+                                <span class="px-2.5 py-1 rounded-md bg-dark-bg border border-gray-800 text-white">Aseprite</span>
+                                <span class="px-2.5 py-1 rounded-md bg-dark-bg border border-gray-800 text-white">Pyxel Edit</span>
+                                <span class="px-2.5 py-1 rounded-md bg-dark-bg border border-gray-800 text-accent-pink">Vanities & Outfits</span>
                             </div>
                         </div>
 
-                       <!-- IT Systems & Analysis Card -->
                         <div class="skill-item sys glass-card p-6 rounded-2xl">
                             <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl mb-4">
                                 <i class="fas fa-network-wired"></i>
@@ -392,7 +334,6 @@
                             </div>
                         </div>
 
-                        <!-- Version Control & Workflow Card -->
                         <div class="skill-item sys glass-card p-6 rounded-2xl">
                             <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center text-xl mb-4">
                                 <i class="fab fa-git-alt"></i>
@@ -404,7 +345,6 @@
                                 <span class="px-2.5 py-1 rounded-md bg-dark-bg border border-gray-800 text-amber-300">Repository Mgmt</span>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </section>
@@ -417,8 +357,6 @@
                 </div>
 
                 <div class="grid md:grid-cols-2 gap-8">
-                    
-                    <!-- Project Card 1: Barangay Blotter C++ -->
                     <div class="glass-card rounded-2xl border border-gray-800 overflow-hidden flex flex-col group">
                         <div class="h-52 bg-gradient-to-tr from-indigo-950 via-slate-900 to-slate-950 p-6 flex flex-col justify-between relative overflow-hidden border-b border-gray-800">
                             <i class="fas fa-file-shield text-8xl text-indigo-500/10 absolute -right-4 -bottom-4 group-hover:scale-110 transition-transform"></i>
@@ -448,29 +386,27 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Project Card 2: MMORPG Assets -->
                     <div class="glass-card rounded-2xl border border-gray-800 overflow-hidden flex flex-col group">
                         <div class="h-52 bg-gradient-to-tr from-purple-950 via-slate-900 to-indigo-950 p-6 flex flex-col justify-between relative overflow-hidden border-b border-gray-800">
-                            <!-- Background Pattern Icon -->
-                            <i class="fas fa-ghost text-8xl text-purple-500/10 absolute -right-4 -bottom-4 group-hover:scale-110 transition-transform"></i>
+                            <i class="fas fa-wand-magic-sparkles text-8xl text-purple-500/10 absolute -right-4 -bottom-4 group-hover:scale-110 transition-transform"></i>
                             <div class="flex justify-between items-start z-10">
                                 <span class="px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30 text-xs font-mono font-semibold">Game Graphics Lead</span>
                                 <span class="text-xs text-gray-400 font-mono"><i class="fas fa-calendar-alt mr-1"></i>MMORPG Update</span>
                             </div>
                             <div class="z-10">
-                                <h3 class="text-2xl font-bold text-white group-hover:text-brand-400 transition-colors">MMORPG Halloween Event Assets</h3>
-                                <p class="text-xs text-gray-300 mt-1 font-mono">Dark Fantasy Event UI, Graphics & Promotional Art</p>
+                                <h3 class="text-2xl font-bold text-white group-hover:text-brand-400 transition-colors">MMORPG Cosmetics & Vanity Designs</h3>
+                                <p class="text-xs text-gray-300 mt-1 font-mono">Aseprite & Pyxel Edit Sprites, Character Vanities</p>
                             </div>
                         </div>
                         <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
                             <p class="text-gray-400 text-xs leading-relaxed">
-                                Spearheaded graphic design for an MMORPG seasonal Halloween update. Designed eerie UI overlays, item icons, dark-fantasy 3D props, and digital promotional banners.
+                                Spearheaded graphic design for an MMORPG seasonal update. Created custom pixel cosmetics, character vanities, and equipment sprite designs using Aseprite and Pyxel Edit.
                             </p>
                             <div class="flex items-center justify-between pt-2 border-t border-gray-800/80">
                                 <div class="flex gap-2 font-mono text-[10px]">
-                                    <span class="px-2 py-0.5 rounded bg-dark-bg text-gray-300 border border-gray-800">Ibis Paint X</span>
-                                    <span class="px-2 py-0.5 rounded bg-dark-bg text-gray-300 border border-gray-800">3D Assets</span>
+                                    <span class="px-2 py-0.5 rounded bg-dark-bg text-gray-300 border border-white">Aseprite</span>
+                                    <span class="px-2 py-0.5 rounded bg-dark-bg text-gray-300 border border-white">Pyxel Edit</span>
+                                    <span class="px-2 py-0.5 rounded bg-dark-bg text-gray-300 border border-gray-800">Cosmetics</span>
                                 </div>
                                 <button onclick="openProjectModal('mmorpg')" class="text-xs font-semibold text-brand-400 hover:text-brand-300 flex items-center gap-1">
                                     <span>Details</span>
@@ -480,7 +416,6 @@
                         </div>
                     </div>
 
-                    <!-- Project Card 3: Roblox 3D Models -->
                     <div class="glass-card rounded-2xl border border-gray-800 overflow-hidden flex flex-col group">
                         <div class="h-52 bg-gradient-to-tr from-cyan-950 via-slate-900 to-blue-950 p-6 flex flex-col justify-between relative overflow-hidden border-b border-gray-800">
                             <i class="fas fa-shield-halved text-8xl text-cyan-500/10 absolute -right-4 -bottom-4 group-hover:scale-110 transition-transform"></i>
@@ -511,7 +446,6 @@
                         </div>
                     </div>
 
-                    <!-- Project Card 4: Web Portfolio Template -->
                     <div class="glass-card rounded-2xl border border-gray-800 overflow-hidden flex flex-col group">
                         <div class="h-52 bg-gradient-to-tr from-pink-950 via-slate-900 to-rose-950 p-6 flex flex-col justify-between relative overflow-hidden border-b border-gray-800">
                             <i class="fas fa-globe text-8xl text-pink-500/10 absolute -right-4 -bottom-4 group-hover:scale-110 transition-transform"></i>
@@ -520,13 +454,13 @@
                                 <span class="text-xs text-gray-400 font-mono"><i class="fas fa-code mr-1"></i>Frontend Web</span>
                             </div>
                             <div class="z-10">
-                                <h3 class="text-2xl font-bold text-white group-hover:text-pink-400 transition-colors">Interactive Portfolio & README Generator</h3>
+                                <h3 class="text-2xl font-bold text-white group-hover:text-pink-400 transition-colors">Interactive Web Portfolio</h3>
                                 <p class="text-xs text-gray-300 mt-1 font-mono">Tailwind CSS & JavaScript App</p>
                             </div>
                         </div>
                         <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
                             <p class="text-gray-400 text-xs leading-relaxed">
-                                A fully responsive single-file web portfolio featuring dual view modes, live markdown preview parsing, skill filtering, and interactive modal windows.
+                                A fully responsive single-file web portfolio featuring skill filtering, interactive modal windows, and glassmorphism UI components.
                             </p>
                             <div class="flex items-center justify-between pt-2 border-t border-gray-800/80">
                                 <div class="flex gap-2 font-mono text-[10px]">
@@ -540,20 +474,18 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </section>
 
-            <!-- Personal Hobbies & Gaming Section -->
+            <!-- Personal Hobbies Section -->
             <section class="py-20 bg-dark-card/30 border-t border-gray-800/80">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="text-center max-w-2xl mx-auto mb-12">
                         <h2 class="text-3xl font-bold text-white tracking-tight">Interests & Daily Pursuits</h2>
-                        <p class="text-gray-400 text-sm mt-2">Activities that complement creative work with physical discipline, music, and gaming competitive focus.</p>
+                        <p class="text-gray-400 text-sm mt-2">Activities that complement creative work with physical discipline, music, and pixel game cosmetics design.</p>
                     </div>
 
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                        <!-- Calisthenics -->
                         <div class="glass-card p-5 rounded-2xl text-center flex flex-col items-center">
                             <div class="w-12 h-12 rounded-2xl bg-orange-500/10 text-orange-400 flex items-center justify-center text-xl mb-3 border border-orange-500/20">
                                 <i class="fas fa-dumbbell"></i>
@@ -562,7 +494,6 @@
                             <p class="text-[11px] text-gray-400 leading-relaxed">Bodyweight strength, push-up variations, core conditioning, and home routines.</p>
                         </div>
 
-                        <!-- Guitar -->
                         <div class="glass-card p-5 rounded-2xl text-center flex flex-col items-center">
                             <div class="w-12 h-12 rounded-2xl bg-yellow-500/10 text-yellow-400 flex items-center justify-center text-xl mb-3 border border-yellow-500/20">
                                 <i class="fas fa-guitar"></i>
@@ -571,18 +502,16 @@
                             <p class="text-[11px] text-gray-400 leading-relaxed">Acoustic song covers focusing on Indie Pop & Synth-pop melody arrangements.</p>
                         </div>
 
-                        <!-- Mobile Legends -->
-                        <div class="glass-card p-5 rounded-2xl text-center flex flex-col items-center">
-                            <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl mb-3 border border-emerald-500/20">
-                                <i class="fas fa-gamepad"></i>
-                            </div>
-                            <h4 class="font-bold text-white text-sm mb-1">MLBB & CODM</h4>
-                            <p class="text-[11px] text-gray-400 leading-relaxed">Mythical Immortal rank in Mobile Legends (Team Ryokuji) & Call of Duty Mobile.</p>
-                        </div>
-
-                        <!-- PokeMMO & Ghibli -->
                         <div class="glass-card p-5 rounded-2xl text-center flex flex-col items-center">
                             <div class="w-12 h-12 rounded-2xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-xl mb-3 border border-purple-500/20">
+                                <i class="fas fa-shirt"></i>
+                            </div>
+                            <h4 class="font-bold text-white text-sm mb-1">Pixel Cosmetics</h4>
+                            <p class="text-[11px] text-gray-400 leading-relaxed">Designing game vanities and character outfits with Aseprite and Pyxel Edit.</p>
+                        </div>
+
+                        <div class="glass-card p-5 rounded-2xl text-center flex flex-col items-center">
+                            <div class="w-12 h-12 rounded-2xl bg-pink-500/10 text-pink-400 flex items-center justify-center text-xl mb-3 border border-pink-500/20">
                                 <i class="fas fa-palette"></i>
                             </div>
                             <h4 class="font-bold text-white text-sm mb-1">PokeMMO & Ghibli</h4>
@@ -592,34 +521,11 @@
                 </div>
             </section>
         </div>
-    
-
-            <!-- Two-Column Workspace: Markdown Editor vs Live Preview -->
-            <div class="grid lg:grid-cols-2 gap-8">
-
-                <!-- Rendered Markdown Preview Box -->
-                <div class="flex flex-col h-[700px] glass-panel rounded-2xl border border-gray-800 overflow-hidden">
-                    <div class="px-4 py-3 bg-dark-card border-b border-gray-800 flex items-center justify-between">
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-eye text-brand-400 text-xs"></i>
-                            <span class="text-xs text-gray-400 font-mono">Live GitHub Preview</span>
-                        </div>
-                        <span class="text-[11px] text-gray-500 font-mono">Simulated Render</span>
-                    </div>
-                    <div id="markdown-rendered" class="w-full flex-grow bg-dark-card p-6 overflow-y-auto markdown-preview">
-                        <!-- Simulated Markdown output rendered via JS -->
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
     </main>
 
     <!-- Project Modal Overlay -->
     <div id="project-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="glass-panel w-full max-w-2xl rounded-3xl border border-gray-800 overflow-hidden shadow-2xl relative animate-float">
-            <!-- Modal Header -->
+        <div class="glass-panel w-full max-w-2xl rounded-3xl border border-gray-800 overflow-hidden shadow-2xl relative">
             <div class="p-6 border-b border-gray-800 flex items-center justify-between">
                 <div class="flex items-center gap-3">
                     <div id="modal-icon-bg" class="w-10 h-10 rounded-xl flex items-center justify-center text-lg">
@@ -635,7 +541,6 @@
                 </button>
             </div>
             
-            <!-- Modal Body -->
             <div class="p-6 space-y-4 max-h-[70vh] overflow-y-auto text-xs text-gray-300 leading-relaxed">
                 <div id="modal-body"></div>
                 <div class="pt-4 border-t border-gray-800/80">
@@ -644,7 +549,6 @@
                 </div>
             </div>
 
-            <!-- Modal Footer -->
             <div class="p-4 bg-dark-card border-t border-gray-800 flex justify-end">
                 <button onclick="closeProjectModal()" class="px-5 py-2 rounded-xl bg-gray-800 hover:bg-gray-700 text-white font-semibold text-xs transition-colors">
                     Close Window
@@ -662,7 +566,7 @@
             </div>
 
             <div class="flex items-center gap-4 text-gray-400 text-sm">
-                <a href="https://github.com/Danxietyy-" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl glass-card flex items-center justify-center hover:text-brand-400 hover:border-brand-500 transition-all">
+                <a href="https://github.com/Danxietyy/Danxietyy-" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl glass-card flex items-center justify-center hover:text-brand-400 hover:border-brand-500 transition-all">
                     <i class="fab fa-github"></i>
                 </a>
             </div>
@@ -672,16 +576,12 @@
                 <p class="mt-0.5 text-[10px]">Built with Tailwind CSS, FontAwesome & JavaScript</p>
             </div>
         </div>
-    </footer>
+                    </footer>
+
 
     <!-- Main JavaScript Logic -->
     <script>
-
-<p align="center">
-  <i>"Combining software engineering principles with creative 3D artistry and game design."</i>
-</p>`;
-
-      // Project Modal Data
+        // Project Modal Data
         const projectData = {
             blotter: {
                 title: "Barangay Incident Management System",
@@ -699,19 +599,19 @@
                 tags: ["C++", "Object-Oriented Programming", "File Systems", "CLI"]
             },
             mmorpg: {
-                title: "MMORPG Halloween Event Assets",
+                title: "MMORPG Cosmetics & Vanity Designs",
                 category: "Lead Game & Graphics Designer",
-                icon: "fa-ghost",
+                icon: "fa-wand-magic-sparkles",
                 bg: "bg-purple-500/20 text-purple-300 border border-purple-500/30",
                 description: `
-                    <p class="mb-3">Served as the Lead Game and Graphics Designer for a major seasonal Halloween update in an active MMORPG title.</p>
+                    <p class="mb-3">Served as the Lead Game and Graphics Designer creating custom cosmetics and vanities for an active MMORPG title.</p>
                     <ul class="list-disc pl-5 space-y-1">
+                        <li>Utilized Aseprite and Pyxel Edit to design custom pixel cosmetics, character vanities, and outfits.</li>
                         <li>Crafted dark-fantasy themed user interface overlays, buttons, and HUD elements.</li>
                         <li>Designed promotional digital art banners and social media campaign graphics.</li>
-                        <li>Engineered matching 3D event asset props and collectible items for in-game rewards.</li>
                     </ul>
                 `,
-                tags: ["Ibis Paint X", "3D Art", "UI Design", "Game Assets"]
+                tags: ["Aseprite", "Pyxel Edit", "Game Cosmetics", "Vanity Designs", "UI Design"]
             },
             roblox: {
                 title: "Roblox 3D Weapons & Avatars",
@@ -729,16 +629,15 @@
                 tags: ["Blender", "Prisma3D", "Roblox Studio", "Low-Poly Modeling"]
             },
             portfolio: {
-                title: "Interactive Web Portfolio & Generator",
+                title: "Interactive Web Portfolio",
                 category: "Frontend Web Developer",
                 icon: "fa-globe",
                 bg: "bg-pink-500/20 text-pink-300 border border-pink-500/30",
                 description: `
-                    <p class="mb-3">A responsive single-file web portfolio designed for GitHub deployment and profile showcase.</p>
+                    <p class="mb-3">A responsive single-file web portfolio designed for GitHub deployment and professional profile showcase.</p>
                     <ul class="list-disc pl-5 space-y-1">
-                        <li>Features dual view modes for live web portfolio browsing and GitHub README generation.</li>
-                        <li>Includes real-time markdown parsing simulation and one-click code copying.</li>
-                        <li>Styled with Tailwind CSS glassmorphism components and dynamic interactive skill filters.</li>
+                        <li>Features dynamic skill category filters and project detail modal windows.</li>
+                        <li>Styled with modern Tailwind CSS glassmorphism components and smooth responsive layouts.</li>
                     </ul>
                 `,
                 tags: ["HTML5", "JavaScript", "Tailwind CSS", "GitHub Pages"]
@@ -780,28 +679,6 @@
             }
         }
 
-        // View Switching Logic
-        function switchView(view) {
-            const portfolioView = document.getElementById("portfolio-view");
-            const readmeView = document.getElementById("readme-view");
-            const portfolioBtn = document.getElementById("view-portfolio-btn");
-            const readmeBtn = document.getElementById("view-readme-btn");
-
-            if (view === "portfolio") {
-                portfolioView.classList.remove("hidden");
-                readmeView.classList.add("hidden");
-                
-                portfolioBtn.className = "flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold transition-all duration-200 bg-brand-600 text-white shadow-md";
-                readmeBtn.className = "flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition-all duration-200";
-            } else {
-                portfolioView.classList.add("hidden");
-                readmeView.classList.remove("hidden");
-                
-                readmeBtn.className = "flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold transition-all duration-200 bg-brand-600 text-white shadow-md";
-                portfolioBtn.className = "flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition-all duration-200";
-            }
-        }
-
         // Skills Filtering Logic
         function filterSkills(category) {
             const items = document.querySelectorAll('.skill-item');
@@ -821,47 +698,6 @@
                     item.style.display = 'none';
                 }
             });
-      }
-
-      // Markdown Live Preview Logic
-        function updateReadmePreview() {
-            const rawCode = document.getElementById("markdown-code").value;
-            const previewContainer = document.getElementById("markdown-rendered");
-
-            // Simple Markdown Parser Simulation
-            let html = rawCode
-                .replace(/^# (.*$)/gim, '<h1>$1</h1>')
-                .replace(/^## (.*$)/gim, '<h2>$1</h2>')
-                .replace(/^### (.*$)/gim, '<h3>$1</h3>')
-                .replace(/^---$/gim, '<hr>')
-                .replace(/\*\*(.* animate-pulse)?\*\*/gim, '<strong>$1</strong>')
-                .replace(/\*(.*)\*/gim, '<i>$1</i>')
-                .replace(/`([^`]+)`/gim, '<code>$1</code>')
-                .replace(/!\[(.*?)\]\((.*?)\)/gim, '<img alt="$1" src="$2" class="inline-block my-1 max-w-full">')
-                .replace(/\[(.*?)\]\((.*?)\)/gim, '<a href="$2" target="_blank" class="text-brand-400 hover:underline">$1</a>')
-                .replace(/^- (.*$)/gim, '<ul><li>$1</li></ul>')
-                .replace(/\n$/gim, '<br>');
-
-            previewContainer.innerHTML = html;
-        }
-
-        // Copy Markdown Function
-        function copyMarkdown() {
-            const markdownText = document.getElementById("markdown-code").value;
-            
-            // Clipboard Copy Fallback
-            const textarea = document.createElement("textarea");
-            textarea.value = markdownText;
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand("copy");
-            document.body.removeChild(textarea);
-
-            const copyBtnText = document.getElementById("copy-text");
-            copyBtnText.innerText = "Copied to Clipboard!";
-            setTimeout(() => {
-                copyBtnText.innerText = "Copy README Markdown";
-            }, 2500);
         }
 
         // Project Modal Logic
@@ -890,14 +726,9 @@
 
         // Initializer on Page Load
         window.onload = function() {
-            // Populate README raw textarea
-            const codeTextarea = document.getElementById("markdown-code");
-            codeTextarea.value = defaultReadme;
-            updateReadmePreview();
-
-            // Start typing loop
             typeEffect();
         };
     </script>
 </body>
 </html>
+          
