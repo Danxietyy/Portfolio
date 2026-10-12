@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jordan Batinga | BSIT Student & Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            400: '#818cf8',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            900: '#312e81',
+                        },
+                        accent: {
+                            cyan: '#06b6d4',
+                            purple: '#a855f7',
+                            pink: '#ec4899',
+                            emerald: '#10b981',
+                        },
+                        dark: {
+                            bg: '#080B11',
+                            card: '#101622',
+                            border: '#1E293B',
+                            hover: '#1B2436',
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Glassmorphism and Utility Styles -->
+    <style>
+        body {
+            background-color: #080B11;
+            color: #F3F4F6;
+            overflow-x: hidden;
+        }
+
+        .glass-panel {
+            background: rgba(16, 22, 34, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card {
+            background: rgba(16, 22, 34, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px -10px rgba(99, 102, 241, 0.25);
+        }
+
+        .glow-effect {
+            position: relative;
+        }
+
+        .glow-effect::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #6366f1, #a855f7, #06b6d4, #6366f1);
+            border-radius: inherit;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            filter: blur(10px);
+        }
+
+        .glow-effect:hover::before {
+            opacity: 0.6;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #080B11;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1E293B;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4F46E5;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #a855f7 0%, #6366f1 50%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Markdown Render Styling Simulation */
+        .markdown-preview h1 { font-size: 1.75rem; font-weight: 800; margin-bottom: 0.75rem; color: #fff; border-bottom: 1px solid #1E293B; padding-bottom: 0.5rem; }
+        .markdown-preview h2 { font-size: 1.35rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #E2E8F0; border-bottom: 1px solid #1E293B; padding-bottom: 0.25rem; }
+        .markdown-preview h3 { font-size: 1.1rem; font-weight: 600; margin-top: 1.25rem; margin-bottom: 0.5rem; color: #CBD5E1; }
+        .markdown-preview p { font-size: 0.95rem; margin-bottom: 0.75rem; color: #94A3B8; leading-height: 1.6; }
+        .markdown-preview ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; color: #94A3B8; }
+        .markdown-preview li { margin-bottom: 0.25rem; }
+        .markdown-preview code { font-family: 'JetBrains Mono', monospace; background: rgba(30, 41, 59, 0.8); padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-size: 0.85rem; color: #818CF8; }
+        .markdown-preview hr { border-color: #1E293B; margin: 1.5rem 0; }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-200 min-h-screen flex flex-col">
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-gray-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 via-accent-purple to-accent-cyan p-0.5 shadow-lg shadow-brand-500/20 group-hover:scale-105 transition-transform">
+                    <div class="w-full h-full bg-dark-bg rounded-[10px] flex items-center justify-center font-bold font-mono text-white text-lg">
+                        JB
+                    </div>
+                </div>
+                <div>
+                    <span class="font-bold text-lg text-white tracking-tight block leading-none">Jordan Batinga</span>
+                    <span class="text-xs text-brand-400 font-mono tracking-wide">@Danxietyy-</span>
+                </div>
+            </a>
+
+            <!-- Navigation Mode Switcher -->
+            <div class="flex items-center bg-dark-card p-1 rounded-xl border border-gray-800 shadow-inner">
+                <button id="view-portfolio-btn" onclick="switchView('portfolio')" class="flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold transition-all duration-200 bg-brand-600 text-white shadow-md">
+                    <i class="fas fa-globe text-sm"></i>
+                    <span class="hidden md:inline">Live Web Portfolio</span>
+                    <span class="md:hidden">Portfolio</span>
+                </button>
+                <button id="view-readme-btn" onclick="switchView('readme')" class="flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition-all duration-200">
+                    <i class="fab fa-github text-sm"></i>
+                    <span class="hidden md:inline">GitHub README Generator</span>
+                    <span class="md:hidden">README</span>
+                </button>
+            </div>
+
+            <!-- Quick Action Links -->
+            <div class="hidden lg:flex items-center gap-3">
+                <a href="https://github.com/Danxietyy-" target="_blank" rel="noopener" class="px-4 py-2 text-xs font-semibold rounded-xl glass-card hover:bg-gray-800 text-gray-200 flex items-center gap-2 border border-gray-700/60">
+                    <i class="fab fa-github text-base text-gray-300"></i>
+                    <span>GitHub Profile</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        
+        <!-- ================= LIVE WEB PORTFOLIO VIEW ================= -->
+        <div id="portfolio-view" class="transition-opacity duration-300">
+            
+            <!-- Hero Section -->
+            <section class="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden">
+                <!-- Background Glowing Orbs -->
+                <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-brand-500/15 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute top-1/3 right-10 w-72 h-72 bg-accent-purple/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="grid lg:grid-cols-12 gap-12 items-center relative z-10">
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        
+                        <!-- Status Badge -->
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/30 text-brand-400 text-xs font-mono">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                            <span>BSIT Student • Lead Game & Graphics Designer</span>
+                        </div>
+
+                        <!-- Typing Header -->
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                            Building Software Systems & <span class="gradient-text">Immersive 3D Worlds</span>
+                        </h1>
+
+                        <!-- Dynamic Animated Subtitle -->
+                        <div class="h-8 font-mono text-base sm:text-lg text-brand-400 flex items-center justify-center lg:justify-start gap-2">
+                            <span class="text-gray-500">&gt;</span>
+                            <span id="typing-text" class="border-r-2 border-brand-400 pr-1 font-semibold"></span>
+                        </div>
+
+                        <p class="text-gray-400 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                            Hi, I'm <strong>Jordan Batinga</strong> from San Felipe, Zambales, Philippines. A BSIT Student combining software development, structured C++/web applications, 3D character asset modeling, and game graphics design.
+                        </p>
+
+                        <!-- CTA Buttons -->
+                        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+                            <a href="#projects" class="px-6 py-3.5 text-sm font-semibold rounded-xl bg-brand-600 hover:bg-brand-500 text-white transition-all shadow-lg shadow-brand-500/30 flex items-center gap-2 group">
+                                <span>Explore Projects</span>
+                                <i class="fas fa-arrow-down text-xs group-hover:translate-y-1 transition-transform"></i>
+                            </a>
+                            <button onclick="switchView('readme')" class="px-6 py-3.5 text-sm font-semibold rounded-xl glass-card hover:bg-gray-800/80 text-gray-200 transition-all border border-gray-700/80 flex items-center gap-2">
+                                <i class="fab fa-github text-brand-400"></i>
+                                <span>Get GitHub Profile README</span>
+                            </button>
+                        </div>
+
+                        <!-- Quick Tech Highlights Bar -->
+                        <div class="pt-8 border-t border-gray-800/80 grid grid-cols-2 sm:grid-cols-4 gap-4 text-left">
+                            <div class="p-3 rounded-xl bg-dark-card/50 border border-gray-800">
+                                <div class="text-xs text-gray-400 font-mono">Major</div>
+                                <div class="text-sm font-bold text-white mt-0.5">BSIT Student</div>
+                            </div>
+                            <div class="p-3 rounded-xl bg-dark-card/50 border border-gray-800">
+                                <div class="text-xs text-gray-400 font-mono">Development</div>
+                                <div class="text-sm font-bold text-white mt-0.5">C++ / OOP & Web</div>
+                            </div>
+                            <div class="p-3 rounded-xl bg-dark-card/50 border border-gray-800">
+                                <div class="text-xs text-gray-400 font-mono">3D Suite</div>
+                                <div class="text-sm font-bold text-white mt-0.5">Blender & Prisma</div>
+                            </div>
+                            <div class="p-3 rounded-xl bg-dark-card/50 border border-gray-800">
+                                <div class="text-xs text-gray-400 font-mono">Rank</div>
+                                <div class="text-sm font-bold text-emerald-400 mt-0.5">Immortal (ML)</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Hero Visual Card -->
+                    <div class="lg:col-span-5 relative">
+                        <div class="glass-panel p-6 rounded-3xl border border-gray-800 shadow-2xl relative animate-float">
+                            <!-- Card Header -->
+                            <div class="flex items-center justify-between pb-4 border-b border-gray-800 mb-6">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-brand-600 to-accent-purple flex items-center justify-center text-white text-xl font-bold shadow-md">
+                                        JB
+                                    </div>
+                                    <div>
+                                        <h3 class="text-white font-bold text-base">Jordan Batinga</h3>
+                                        <p class="text-xs text-gray-400 font-mono">San Felipe, Zambales, PH 🇵🇭</p>
+                                    </div>
+                                </div>
+                                <span class="px-2.5 py-1 text-[10px] font-mono font-bold rounded-md bg-brand-500/20 text-brand-300 border border-brand-500/30">ONLINE</span>
+                            </div>
+
+                            <!-- Interactive Tech Badges -->
+                            <div class="space-y-3 font-mono text-xs">
+                                <div class="p-3 rounded-xl bg-dark-bg/80 border border-gray-800/80 flex items-center justify-between">
+                                    <span class="text-gray-400 flex items-center gap-2">
+                                        <i class="fas fa-laptop-code text-brand-400"></i> Degree Program
+                                    </span>
+                                    <span class="text-gray-200 font-semibold">BS Information Technology</span>
+                                </div>
+                                <div class="p-3 rounded-xl bg-dark-bg/80 border border-gray-800/80 flex items-center justify-between">
+                                    <span class="text-gray-400 flex items-center gap-2">
+                                        <i class="fas fa-code text-accent-cyan"></i> Software Dev
+                                    </span>
+                                    <span class="text-gray-200 font-semibold">C++, HTML/CSS/JS, OOP</span>
+                                </div>
+                                <div class="p-3 rounded-xl bg-dark-bg/80 border border-gray-800/80 flex items-center justify-between">
+                                    <span class="text-gray-400 flex items-center gap-2">
+                                        <i class="fas fa-cube text-accent-purple"></i> 3D & Graphics
+                                    </span>
+                                    <span class="text-gray-200 font-semibold">Blender & Roblox Studio</span>
+                                </div>
+                                <div class="p-3 rounded-xl bg-dark-bg/80 border border-gray-800/80 flex items-center justify-between">
+                                    <span class="text-gray-400 flex items-center gap-2">
+                                        <i class="fas fa-database text-accent-pink"></i> Systems Focus
+                                    </span>
+                                    <span class="text-gray-200 font-semibold">File Persistence & CLI</span>
+                                </div>
+                            </div>
+
+                            <!-- Quick Bio Quote -->
+                            <div class="mt-6 p-4 rounded-xl bg-brand-900/20 border border-brand-500/20 text-xs text-gray-300 italic leading-relaxed">
+                                "Combining software engineering principles with creative 3D artistry and game design."
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills & Toolstack Section -->
+            <section id="skills" class="py-20 bg-dark-card/30 border-y border-gray-800/80">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-2xl mx-auto mb-12">
+                        <h2 class="text-3xl font-bold text-white tracking-tight">Skills & Capabilities</h2>
+                        <p class="text-gray-400 text-sm mt-2">Tools, engines, and programming languages applied across software building and game production.</p>
+                        
+                        <!-- Skill Filter Buttons -->
+                        <div class="flex flex-wrap justify-center gap-2 mt-6">
+                            <button onclick="filterSkills('all')" class="skill-tab-btn active px-4 py-1.5 rounded-full text-xs font-semibold bg-brand-600 text-white transition-all">All Skills</button>
+                            <button onclick="filterSkills('dev')" class="skill-tab-btn px-4 py-1.5 rounded-full text-xs font-semibold glass-card text-gray-400 hover:text-white transition-all">Programming</button>
+                            <button onclick="filterSkills('3d')" class="skill-tab-btn px-4 py-1.5 rounded-full text-xs font-semibold glass-card text-gray-400 hover:text-white transition-all">3D & Design</button>
+                            <button onclick="filterSkills('sys')" class="skill-tab-btn px-4 py-1.5 rounded-full text-xs font-semibold glass-card text-gray-400 hover:text-white transition-all">Systems & Tools</button>
+                        </div>
+                    </div>
+
+                    <!-- Skill Cards Grid -->
+                    <div class="grid md:grid-cols-3 gap-6" id="skills-container">
+                        
+                        <!-- C++ & Programming Card -->
+                        <div class="skill-item dev glass-card p-6 rounded-2xl">
+                            <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center text-xl mb-4">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-2">Software & C++ Development</h3>
+                            <p class="text-xs text-gray-400 leading-relaxed mb-4">Writing structured console applications, implementing object-oriented programming (OOP), and managing file input/output persistence.</p>
+                            <div class="flex flex-wrap gap-2 font-mono text-[11px]">
+                                <span class="px-2.5 py-1 rounded-md bg-dark-bg border border-gray-800 text-brand-300">C++</span>
+                                <span class="px-2.5 py-1 rounded-md bg-dark-bg border border-gray-800 text-brand-300">OOP</span>
+                                <span class="px-2.5 py-1 rounded-md bg-dark-bg border border-gray-800 text-brand-300">File Handling</span>
+                            </div>
+                        </div>
+
+                        <!-- Web Development Card -->
+                        <div class="skill-item dev glass-card p-6 rounded-2xl">
+                            <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center text-xl mb-4">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-2">Web Frontend Technologies</h3>
+                            <p class="text-xs text-gray-400 leading-relaxed mb-4">Building responsive user interfaces, custom web layouts, and interactive components using modern web languages.</p>
+                            <div class="flex flex-wrap gap-2 font-mono text-[11px]">
+                                <span class="px-2.5 py-1 rounded-md bg-dark-bg border border-gray-800 text-accent-cyan">HTML5</span>
+                                <span class="px-2.5 py-1 rounded-md bg-dark-bg border border-gray-800 text-accent-cyan">CSS3 / Tailwind</span>
+                                <span class="px-2.5 py-1 rounded-md bg-dark-bg border border-gray-800 text-accent-cyan">JavaScript</span>
+                            </div>
+                        </div>
+
+                        <!-- 3D Art Card -->
+                        <div class="skill-item 3d glass-card p-6 rounded-2xl">
+                            <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center text-xl mb-4">
+                                <i class="fas fa-cubes"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-2">3D Modeling & Rigging</h3>
+                            <p class="text-xs text-gray-400 leading-relaxed mb-4">Sculpting low-poly meshes, texture mapping, and rigging character avatars and weapon props for game environments.</p>
+                            <div class="flex flex-wrap gap-2 font-mono text-[11px]">
+                                <span class="px-2.5 py-1 rounded-md bg-dark-bg border border-gray-800 text-accent-purple">Blender</span>
+                                <span class="px-2.5 py-1 rounded-md bg-dark-bg border border-gray-800 text-accent-purple">Prisma3D</span>
+                                <span class="px-2.5 py-1 rounded-md bg-dark-bg border border-gray-800 text-accent-purple">Roblox Studio</span>
+                            </div>
+                        </div>
+
+                        <!-- Graphics & UI Card -->
+                        <div class="skill-item 3d glass-card p-6 rounded-2xl">
+                            <div class="w-12 h-12 rounded-xl bg-pink-500/10 border border-pink-500/20 text-pink-400 flex items-center justify-center text-xl mb-4">
+                                <i class="fas fa-paint-brush"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-2">Game Graphics & UI Design</h3>
+                            <p class="text-xs text-gray-400 leading-relaxed mb-4">Designing promotional event banners, dark fantasy UI overlays, and game icons for MMORPG title updates.</p>
+                            <div class="flex flex-wrap gap-2 font-mono text-[11px]">
+                                <span class="px-2.5 py-1 rounded-md bg-dark-bg border border-gray-800 text-accent-pink">Ibis Paint X</span>
+                                <span class="px-2.5 py-1 rounded-md bg-dark-bg border border-gray-800 text-accent-pink">UI/UX Assets</span>
+                            </div>
+                        </div>
+
+                       <!-- IT Systems & Analysis Card -->
+                        <div class="skill-item sys glass-card p-6 rounded-2xl">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl mb-4">
+                                <i class="fas fa-network-wired"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-2">Systems Analysis & Architecture</h3>
+                            <p class="text-xs text-gray-400 leading-relaxed mb-4">Database organization concepts, data flow structuring, and creating architectural floor plan layouts.</p>
+                            <div class="flex flex-wrap gap-2 font-mono text-[11px]">
+                                <span class="px-2.5 py-1 rounded-md bg-dark-bg border border-gray-800 text-emerald-400">Database Design</span>
+                                <span class="px-2.5 py-1 rounded-md bg-dark-bg border border-gray-800 text-emerald-400">System Flow</span>
+                            </div>
+                        </div>
+
+                        <!-- Version Control & Workflow Card -->
+                        <div class="skill-item sys glass-card p-6 rounded-2xl">
+                            <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center text-xl mb-4">
+                                <i class="fab fa-git-alt"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-2">Version Control & Workflow</h3>
+                            <p class="text-xs text-gray-400 leading-relaxed mb-4">Managing source code repositories, issue tracking, and team asset coordination for collaborative projects.</p>
+                            <div class="flex flex-wrap gap-2 font-mono text-[11px]">
+                                <span class="px-2.5 py-1 rounded-md bg-dark-bg border border-gray-800 text-amber-300">Git / GitHub</span>
+                                <span class="px-2.5 py-1 rounded-md bg-dark-bg border border-gray-800 text-amber-300">Repository Mgmt</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Projects Section -->
+            <section id="projects" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <h2 class="text-3xl font-bold text-white tracking-tight">Featured Projects</h2>
+                    <p class="text-gray-400 text-sm mt-2">Highlights of C++ software systems, 3D modeling work, and game design productions.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    
+                    <!-- Project Card 1: Barangay Blotter C++ -->
+                    <div class="glass-card rounded-2xl border border-gray-800 overflow-hidden flex flex-col group">
+                        <div class="h-52 bg-gradient-to-tr from-indigo-950 via-slate-900 to-slate-950 p-6 flex flex-col justify-between relative overflow-hidden border-b border-gray-800">
+                            <i class="fas fa-file-shield text-8xl text-indigo-500/10 absolute -right-4 -bottom-4 group-hover:scale-110 transition-transform"></i>
+                            <div class="flex justify-between items-start z-10">
+                                <span class="px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 text-xs font-mono font-semibold">C++ System Software</span>
+                                <span class="text-xs text-gray-400 font-mono"><i class="fas fa-terminal mr-1"></i>CLI Application</span>
+                            </div>
+                            <div class="z-10">
+                                <h3 class="text-2xl font-bold text-white group-hover:text-indigo-400 transition-colors">Barangay Incident & Blotter System</h3>
+                                <p class="text-xs text-gray-300 mt-1 font-mono">C++ OOP & File Handling Storage</p>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+                            <p class="text-gray-400 text-xs leading-relaxed">
+                                Developed a console software solution in C++ to assist barangay officials in San Felipe, Zambales with incident log tracking, resident records, and file persistence storage.
+                            </p>
+                            <div class="flex items-center justify-between pt-2 border-t border-gray-800/80">
+                                <div class="flex gap-2 font-mono text-[10px]">
+                                    <span class="px-2 py-0.5 rounded bg-dark-bg text-gray-300 border border-gray-800">C++</span>
+                                    <span class="px-2 py-0.5 rounded bg-dark-bg text-gray-300 border border-gray-800">OOP</span>
+                                    <span class="px-2 py-0.5 rounded bg-dark-bg text-gray-300 border border-gray-800">File Storage</span>
+                                </div>
+                                <button onclick="openProjectModal('blotter')" class="text-xs font-semibold text-indigo-400 hover:text-indigo-300 flex items-center gap-1">
+                                    <span>Details</span>
+                                    <i class="fas fa-chevron-right text-[10px]"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 2: MMORPG Assets -->
+                    <div class="glass-card rounded-2xl border border-gray-800 overflow-hidden flex flex-col group">
+                        <div class="h-52 bg-gradient-to-tr from-purple-950 via-slate-900 to-indigo-950 p-6 flex flex-col justify-between relative overflow-hidden border-b border-gray-800">
+                            <!-- Background Pattern Icon -->
+                            <i class="fas fa-ghost text-8xl text-purple-500/10 absolute -right-4 -bottom-4 group-hover:scale-110 transition-transform"></i>
+                            <div class="flex justify-between items-start z-10">
+                                <span class="px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30 text-xs font-mono font-semibold">Game Graphics Lead</span>
+                                <span class="text-xs text-gray-400 font-mono"><i class="fas fa-calendar-alt mr-1"></i>MMORPG Update</span>
+                            </div>
+                            <div class="z-10">
+                                <h3 class="text-2xl font-bold text-white group-hover:text-brand-400 transition-colors">MMORPG Halloween Event Assets</h3>
+                                <p class="text-xs text-gray-300 mt-1 font-mono">Dark Fantasy Event UI, Graphics & Promotional Art</p>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+                            <p class="text-gray-400 text-xs leading-relaxed">
+                                Spearheaded graphic design for an MMORPG seasonal Halloween update. Designed eerie UI overlays, item icons, dark-fantasy 3D props, and digital promotional banners.
+                            </p>
+                            <div class="flex items-center justify-between pt-2 border-t border-gray-800/80">
+                                <div class="flex gap-2 font-mono text-[10px]">
+                                    <span class="px-2 py-0.5 rounded bg-dark-bg text-gray-300 border border-gray-800">Ibis Paint X</span>
+                                    <span class="px-2 py-0.5 rounded bg-dark-bg text-gray-300 border border-gray-800">3D Assets</span>
+                                </div>
+                                <button onclick="openProjectModal('mmorpg')" class="text-xs font-semibold text-brand-400 hover:text-brand-300 flex items-center gap-1">
+                                    <span>Details</span>
+                                    <i class="fas fa-chevron-right text-[10px]"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 3: Roblox 3D Models -->
+                    <div class="glass-card rounded-2xl border border-gray-800 overflow-hidden flex flex-col group">
+                        <div class="h-52 bg-gradient-to-tr from-cyan-950 via-slate-900 to-blue-950 p-6 flex flex-col justify-between relative overflow-hidden border-b border-gray-800">
+                            <i class="fas fa-shield-halved text-8xl text-cyan-500/10 absolute -right-4 -bottom-4 group-hover:scale-110 transition-transform"></i>
+                            <div class="flex justify-between items-start z-10">
+                                <span class="px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 text-xs font-mono font-semibold">3D Modeling</span>
+                                <span class="text-xs text-gray-400 font-mono"><i class="fas fa-cube mr-1"></i>Low-Poly Engine</span>
+                            </div>
+                            <div class="z-10">
+                                <h3 class="text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors">Roblox 3D Weapons & Avatars</h3>
+                                <p class="text-xs text-gray-300 mt-1 font-mono">Custom Character Meshes & Rigged Props</p>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+                            <p class="text-gray-400 text-xs leading-relaxed">
+                                Modeled and rigged low-poly character meshes and weapon props for Roblox Studio. Sculpted with Blender and mobile-optimized via Prisma3D.
+                            </p>
+                            <div class="flex items-center justify-between pt-2 border-t border-gray-800/80">
+                                <div class="flex gap-2 font-mono text-[10px]">
+                                    <span class="px-2 py-0.5 rounded bg-dark-bg text-gray-300 border border-gray-800">Blender</span>
+                                    <span class="px-2 py-0.5 rounded bg-dark-bg text-gray-300 border border-gray-800">Prisma3D</span>
+                                    <span class="px-2 py-0.5 rounded bg-dark-bg text-gray-300 border border-gray-800">Roblox</span>
+                                </div>
+                                <button onclick="openProjectModal('roblox')" class="text-xs font-semibold text-cyan-400 hover:text-cyan-300 flex items-center gap-1">
+                                    <span>Details</span>
+                                    <i class="fas fa-chevron-right text-[10px]"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 4: Web Portfolio Template -->
+                    <div class="glass-card rounded-2xl border border-gray-800 overflow-hidden flex flex-col group">
+                        <div class="h-52 bg-gradient-to-tr from-pink-950 via-slate-900 to-rose-950 p-6 flex flex-col justify-between relative overflow-hidden border-b border-gray-800">
+                            <i class="fas fa-globe text-8xl text-pink-500/10 absolute -right-4 -bottom-4 group-hover:scale-110 transition-transform"></i>
+                            <div class="flex justify-between items-start z-10">
+                                <span class="px-3 py-1 rounded-full bg-pink-500/20 text-pink-300 border border-pink-500/30 text-xs font-mono font-semibold">Web Development</span>
+                                <span class="text-xs text-gray-400 font-mono"><i class="fas fa-code mr-1"></i>Frontend Web</span>
+                            </div>
+                            <div class="z-10">
+                                <h3 class="text-2xl font-bold text-white group-hover:text-pink-400 transition-colors">Interactive Portfolio & README Generator</h3>
+                                <p class="text-xs text-gray-300 mt-1 font-mono">Tailwind CSS & JavaScript App</p>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+                            <p class="text-gray-400 text-xs leading-relaxed">
+                                A fully responsive single-file web portfolio featuring dual view modes, live markdown preview parsing, skill filtering, and interactive modal windows.
+                            </p>
+                            <div class="flex items-center justify-between pt-2 border-t border-gray-800/80">
+                                <div class="flex gap-2 font-mono text-[10px]">
+                                    <span class="px-2 py-0.5 rounded bg-dark-bg text-gray-300 border border-gray-800">HTML5 / JS</span>
+                                    <span class="px-2.5 py-0.5 rounded bg-dark-bg text-gray-300 border border-gray-800">Tailwind</span>
+                                </div>
+                                <button onclick="openProjectModal('portfolio')" class="text-xs font-semibold text-pink-400 hover:text-pink-300 flex items-center gap-1">
+                                    <span>Details</span>
+                                    <i class="fas fa-chevron-right text-[10px]"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Personal Hobbies & Gaming Section -->
+            <section class="py-20 bg-dark-card/30 border-t border-gray-800/80">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-2xl mx-auto mb-12">
+                        <h2 class="text-3xl font-bold text-white tracking-tight">Interests & Daily Pursuits</h2>
+                        <p class="text-gray-400 text-sm mt-2">Activities that complement creative work with physical discipline, music, and gaming competitive focus.</p>
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                        <!-- Calisthenics -->
+                        <div class="glass-card p-5 rounded-2xl text-center flex flex-col items-center">
+                            <div class="w-12 h-12 rounded-2xl bg-orange-500/10 text-orange-400 flex items-center justify-center text-xl mb-3 border border-orange-500/20">
+                                <i class="fas fa-dumbbell"></i>
+                            </div>
+                            <h4 class="font-bold text-white text-sm mb-1">Home Calisthenics</h4>
+                            <p class="text-[11px] text-gray-400 leading-relaxed">Bodyweight strength, push-up variations, core conditioning, and home routines.</p>
+                        </div>
+
+                        <!-- Guitar -->
+                        <div class="glass-card p-5 rounded-2xl text-center flex flex-col items-center">
+                            <div class="w-12 h-12 rounded-2xl bg-yellow-500/10 text-yellow-400 flex items-center justify-center text-xl mb-3 border border-yellow-500/20">
+                                <i class="fas fa-guitar"></i>
+                            </div>
+                            <h4 class="font-bold text-white text-sm mb-1">Acoustic Guitar</h4>
+                            <p class="text-[11px] text-gray-400 leading-relaxed">Acoustic song covers focusing on Indie Pop & Synth-pop melody arrangements.</p>
+                        </div>
+
+                        <!-- Mobile Legends -->
+                        <div class="glass-card p-5 rounded-2xl text-center flex flex-col items-center">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl mb-3 border border-emerald-500/20">
+                                <i class="fas fa-gamepad"></i>
+                            </div>
+                            <h4 class="font-bold text-white text-sm mb-1">MLBB & CODM</h4>
+                            <p class="text-[11px] text-gray-400 leading-relaxed">Mythical Immortal rank in Mobile Legends (Team Ryokuji) & Call of Duty Mobile.</p>
+                        </div>
+
+                        <!-- PokeMMO & Ghibli -->
+                        <div class="glass-card p-5 rounded-2xl text-center flex flex-col items-center">
+                            <div class="w-12 h-12 rounded-2xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-xl mb-3 border border-purple-500/20">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <h4 class="font-bold text-white text-sm mb-1">PokeMMO & Ghibli</h4>
+                            <p class="text-[11px] text-gray-400 leading-relaxed">Retro PokeMMO gaming alongside Studio Ghibli inspired scenic art styles.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ================= GITHUB README GENERATOR VIEW ================= -->
+        <div id="readme-view" class="hidden transition-opacity duration-300 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            
+            <!-- README Header Info -->
+            <div class="mb-8 p-6 glass-panel rounded-2xl border border-gray-800 flex flex-col md:flex-row items-center justify-between gap-6">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/10 text-brand-400 text-xs font-mono mb-2 border border-brand-500/20">
+                        <i class="fab fa-markdown"></i> Profile README Code
+                    </div>
+                    <h2 class="text-2xl font-bold text-white">GitHub Profile README Generator</h2>
+                    <p class="text-gray-400 text-xs mt-1">Copy this complete Markdown code to paste into your special <code class="text-brand-300 bg-dark-bg px-2 py-0.5 rounded">Danxietyy-/README.md</code> repository on GitHub!</p>
+                </div>
+                <div class="flex items-center gap-3 w-full md:w-auto">
+                    <button id="copy-btn" onclick="copyMarkdown()" class="w-full md:w-auto px-6 py-3 bg-brand-600 hover:bg-brand-500 text-white rounded-xl text-xs font-semibold shadow-lg shadow-brand-500/25 flex items-center justify-center gap-2 transition-all">
+                        <i class="fas fa-copy"></i>
+                        <span id="copy-text">Copy README Markdown</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Two-Column Workspace: Markdown Editor vs Live Preview -->
+            <div class="grid lg:grid-cols-2 gap-8">
+                
+                <!-- Raw Markdown Code Box -->
+                <div class="flex flex-col h-[700px] glass-panel rounded-2xl border border-gray-800 overflow-hidden">
+                    <div class="px-4 py-3 bg-dark-card border-b border-gray-800 flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
+                            <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
+                            <span class="w-3 h-3 rounded-full bg-green-500/80 inline-block"></span>
+                            <span class="text-xs text-gray-400 font-mono ml-2">README.md (Raw Code)</span>
+                        </div>
+                        <span class="text-[11px] text-gray-500 font-mono">Editable</span>
+                    </div>
+                    <textarea id="markdown-code" oninput="updateReadmePreview()" class="w-full flex-grow bg-dark-bg p-4 font-mono text-xs text-indigo-300 resize-none focus:outline-none focus:ring-1 focus:ring-brand-500 leading-relaxed"></textarea>
+                </div>
+
+                <!-- Rendered Markdown Preview Box -->
+                <div class="flex flex-col h-[700px] glass-panel rounded-2xl border border-gray-800 overflow-hidden">
+                    <div class="px-4 py-3 bg-dark-card border-b border-gray-800 flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-eye text-brand-400 text-xs"></i>
+                            <span class="text-xs text-gray-400 font-mono">Live GitHub Preview</span>
+                        </div>
+                        <span class="text-[11px] text-gray-500 font-mono">Simulated Render</span>
+                    </div>
+                    <div id="markdown-rendered" class="w-full flex-grow bg-dark-card p-6 overflow-y-auto markdown-preview">
+                        <!-- Simulated Markdown output rendered via JS -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Project Modal Overlay -->
+    <div id="project-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="glass-panel w-full max-w-2xl rounded-3xl border border-gray-800 overflow-hidden shadow-2xl relative animate-float">
+            <!-- Modal Header -->
+            <div class="p-6 border-b border-gray-800 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div id="modal-icon-bg" class="w-10 h-10 rounded-xl flex items-center justify-center text-lg">
+                        <i id="modal-icon" class="fas"></i>
+                    </div>
+                    <div>
+                        <h3 id="modal-title" class="text-lg font-bold text-white"></h3>
+                        <p id="modal-category" class="text-xs font-mono text-brand-400"></p>
+                    </div>
+                </div>
+                <button onclick="closeProjectModal()" class="w-8 h-8 rounded-full bg-dark-bg border border-gray-800 text-gray-400 hover:text-white flex items-center justify-center transition-colors">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <!-- Modal Body -->
+            <div class="p-6 space-y-4 max-h-[70vh] overflow-y-auto text-xs text-gray-300 leading-relaxed">
+                <div id="modal-body"></div>
+                <div class="pt-4 border-t border-gray-800/80">
+                    <h4 class="font-bold text-white mb-2">Technologies & Tools</h4>
+                    <div id="modal-tags" class="flex flex-wrap gap-2 font-mono text-[11px]"></div>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="p-4 bg-dark-card border-t border-gray-800 flex justify-end">
+                <button onclick="closeProjectModal()" class="px-5 py-2 rounded-xl bg-gray-800 hover:bg-gray-700 text-white font-semibold text-xs transition-colors">
+                    Close Window
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="glass-panel border-t border-gray-800/80 py-12 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="text-center md:text-left">
+                <h4 class="font-bold text-white text-base">Jordan Batinga</h4>
+                <p class="text-xs text-gray-400 mt-1 font-mono">San Felipe, Zambales, Philippines • GitHub: @Danxietyy-</p>
+            </div>
+
+            <div class="flex items-center gap-4 text-gray-400 text-sm">
+                <a href="https://github.com/Danxietyy-" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl glass-card flex items-center justify-center hover:text-brand-400 hover:border-brand-500 transition-all">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+
+            <div class="text-xs text-gray-500 font-mono text-center md:text-right">
+                <p>© 2026 Jordan Batinga. All Rights Reserved.</p>
+                <p class="mt-0.5 text-[10px]">Built with Tailwind CSS, FontAwesome & JavaScript</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Main JavaScript Logic -->
+    <script>
+      // BSIT Profile README Code Template
+        const defaultReadme = `# Hi there, I'm Jordan Batinga 👋 💻🎮
+
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1000&color=6366F1&center=true&vCenter=true&width=500&lines=BSIT+Student+%26+Developer;Lead+Game+%26+Graphics+Designer;C%2B%2B+%26+OOP+Systems+Dev;3D+Asset+Artist+%26+Modeler" alt="Typing SVG" />
+</p>
+
+---
+
+### 🚀 About Me
+
+- 💻 **BSIT Student & Developer** focused on software engineering, OOP systems, and web technologies.
+- 🎮 **Lead Game & Graphics Designer** crafting MMORPG digital assets and themed game event graphics.
+- 🎨 **3D Asset Artist**: Sculpting, modeling, rigging, and animating low-poly character meshes and weapon props.
+- 🛠️ **Tech Stack**: C++, HTML5, CSS3, JavaScript, Git & GitHub, Blender, Prisma3D, Ibis Paint X.
+- 🎯 **Hobbies**: Home Calisthenics, Acoustic Guitar, Mobile Legends (Mythical Immortal), and PokeMMO.
+
+---
+
+### 🛠️ Tools & Technologies
+
+#### **Programming & Systems**
+![C++](https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+
+#### **Game & 3D Development**
+![Blender](https://img.shields.io/badge/Blender-F5792A?style=for-the-badge&logo=blender&logoColor=white)
+![Roblox Studio](https://img.shields.io/badge/Roblox_Studio-00A2FF?style=for-the-badge&logo=roblox&logoColor=white)
+![Prisma3D](https://img.shields.io/badge/Prisma3D-4A90E2?style=for-the-badge&logo=3d&logoColor=white)
+
+---
+
+### 💼 Featured Projects
+
+- 🏛️ **Barangay Incident & Blotter System**  
+  *C++ Developer* — Console application featuring object-oriented programming (OOP) and file persistence for local incident record management.
+
+- 🎃 **MMORPG Event Graphics & Assets**  
+  *Lead Game & Graphics Designer* — Designed dark-fantasy 3D assets, UI elements, and promotional artwork for seasonal game updates.
+
+- ⚔️ **Custom Roblox 3D Weapons & Avatars**  
+  *3D Artist / Modeler* — High-quality 3D character meshes, rigged weapon props, and low-poly assets using Blender & Prisma3D.
+
+- 🌐 **Interactive Web Portfolio & Generator**  
+  *Frontend Developer* — Single-file responsive web app featuring dual modes, live markdown preview parsing, and interactive modal windows.
+
+---
+
+### 📊 GitHub Stats
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=Danxietyy-&show_icons=true&theme=tokyonight&hide_border=true" alt="Jordan's GitHub Stats" />
+</p>
+
+---
+
+### 📫 Connect With Me
+
+- **Location**: San Felipe, Zambales, Philippines 🇵🇭
+- **GitHub**: [@Danxietyy-](https://github.com/Danxietyy-)
+
+---
+
+<p align="center">
+  <i>"Combining software engineering principles with creative 3D artistry and game design."</i>
+</p>`;
+
+      // Project Modal Data
+        const projectData = {
+            blotter: {
+                title: "Barangay Incident Management System",
+                category: "C++ Software Developer",
+                icon: "fa-file-shield",
+                bg: "bg-indigo-500/20 text-indigo-300 border border-indigo-500/30",
+                description: `
+                    <p class="mb-3">A dedicated C++ console application designed to handle local community blotter records for San Felipe, Zambales.</p>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>Implemented Object-Oriented Programming (OOP) classes for incident tracking.</li>
+                        <li>Built file input/output streams to permanently store resident complaints and blotter logs.</li>
+                        <li>Included search, filter, and record update functionalities for local officials.</li>
+                    </ul>
+                `,
+                tags: ["C++", "Object-Oriented Programming", "File Systems", "CLI"]
+            },
+            mmorpg: {
+                title: "MMORPG Halloween Event Assets",
+                category: "Lead Game & Graphics Designer",
+                icon: "fa-ghost",
+                bg: "bg-purple-500/20 text-purple-300 border border-purple-500/30",
+                description: `
+                    <p class="mb-3">Served as the Lead Game and Graphics Designer for a major seasonal Halloween update in an active MMORPG title.</p>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>Crafted dark-fantasy themed user interface overlays, buttons, and HUD elements.</li>
+                        <li>Designed promotional digital art banners and social media campaign graphics.</li>
+                        <li>Engineered matching 3D event asset props and collectible items for in-game rewards.</li>
+                    </ul>
+                `,
+                tags: ["Ibis Paint X", "3D Art", "UI Design", "Game Assets"]
+            },
+            roblox: {
+                title: "Roblox 3D Weapons & Avatars",
+                category: "3D Asset Artist & Modeler",
+                icon: "fa-shield-halved",
+                bg: "bg-cyan-500/20 text-cyan-300 border border-cyan-500/30",
+                description: `
+                    <p class="mb-3">Created low-poly 3D models and character assets specifically optimized for Roblox Studio environments.</p>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>Modeled, textured, and rigged melee weapons, swords, and magical staffs.</li>
+                        <li>Designed custom avatar accessories and character armor meshes.</li>
+                        <li>Utilized Blender for core sculpting and Prisma3D for mobile workflow polygon optimization.</li>
+                    </ul>
+                `,
+                tags: ["Blender", "Prisma3D", "Roblox Studio", "Low-Poly Modeling"]
+            },
+            portfolio: {
+                title: "Interactive Web Portfolio & Generator",
+                category: "Frontend Web Developer",
+                icon: "fa-globe",
+                bg: "bg-pink-500/20 text-pink-300 border border-pink-500/30",
+                description: `
+                    <p class="mb-3">A responsive single-file web portfolio designed for GitHub deployment and profile showcase.</p>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>Features dual view modes for live web portfolio browsing and GitHub README generation.</li>
+                        <li>Includes real-time markdown parsing simulation and one-click code copying.</li>
+                        <li>Styled with Tailwind CSS glassmorphism components and dynamic interactive skill filters.</li>
+                    </ul>
+                `,
+                tags: ["HTML5", "JavaScript", "Tailwind CSS", "GitHub Pages"]
+            }
+        };
+
+        // Typing Effect Loop
+        const typingRoles = [
+            "BSIT Student & Software Developer",
+            "Lead Game & Graphics Designer",
+            "C++ & OOP Systems Developer",
+            "3D Asset Artist & Modeler"
+        ];
+        let roleIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typingSpeed = 80;
+        const typingElement = document.getElementById("typing-text");
+
+        function typeEffect() {
+            const currentRole = typingRoles[roleIndex];
+            if (isDeleting) {
+                typingElement.textContent = currentRole.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingElement.textContent = currentRole.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            if (!isDeleting && charIndex === currentRole.length) {
+                isDeleting = true;
+                setTimeout(typeEffect, 1800);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                roleIndex = (roleIndex + 1) % typingRoles.length;
+                setTimeout(typeEffect, 400);
+            } else {
+                setTimeout(typeEffect, isDeleting ? typingSpeed / 2 : typingSpeed);
+            }
+        }
+
+        // View Switching Logic
+        function switchView(view) {
+            const portfolioView = document.getElementById("portfolio-view");
+            const readmeView = document.getElementById("readme-view");
+            const portfolioBtn = document.getElementById("view-portfolio-btn");
+            const readmeBtn = document.getElementById("view-readme-btn");
+
+            if (view === "portfolio") {
+                portfolioView.classList.remove("hidden");
+                readmeView.classList.add("hidden");
+                
+                portfolioBtn.className = "flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold transition-all duration-200 bg-brand-600 text-white shadow-md";
+                readmeBtn.className = "flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition-all duration-200";
+            } else {
+                portfolioView.classList.add("hidden");
+                readmeView.classList.remove("hidden");
+                
+                readmeBtn.className = "flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold transition-all duration-200 bg-brand-600 text-white shadow-md";
+                portfolioBtn.className = "flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition-all duration-200";
+            }
+        }
+
+        // Skills Filtering Logic
+        function filterSkills(category) {
+            const items = document.querySelectorAll('.skill-item');
+            const tabs = document.querySelectorAll('.skill-tab-btn');
+
+            tabs.forEach(tab => {
+                tab.classList.remove('bg-brand-600', 'text-white');
+                tab.classList.add('glass-card', 'text-gray-400');
+            });
+            event.target.classList.remove('glass-card', 'text-gray-400');
+            event.target.classList.add('bg-brand-600', 'text-white');
+
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+      }
+
+      // Markdown Live Preview Logic
+        function updateReadmePreview() {
+            const rawCode = document.getElementById("markdown-code").value;
+            const previewContainer = document.getElementById("markdown-rendered");
+
+            // Simple Markdown Parser Simulation
+            let html = rawCode
+                .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+                .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+                .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+                .replace(/^---$/gim, '<hr>')
+                .replace(/\*\*(.* animate-pulse)?\*\*/gim, '<strong>$1</strong>')
+                .replace(/\*(.*)\*/gim, '<i>$1</i>')
+                .replace(/`([^`]+)`/gim, '<code>$1</code>')
+                .replace(/!\[(.*?)\]\((.*?)\)/gim, '<img alt="$1" src="$2" class="inline-block my-1 max-w-full">')
+                .replace(/\[(.*?)\]\((.*?)\)/gim, '<a href="$2" target="_blank" class="text-brand-400 hover:underline">$1</a>')
+                .replace(/^- (.*$)/gim, '<ul><li>$1</li></ul>')
+                .replace(/\n$/gim, '<br>');
+
+            previewContainer.innerHTML = html;
+        }
+
+        // Copy Markdown Function
+        function copyMarkdown() {
+            const markdownText = document.getElementById("markdown-code").value;
+            
+            // Clipboard Copy Fallback
+            const textarea = document.createElement("textarea");
+            textarea.value = markdownText;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textarea);
+
+            const copyBtnText = document.getElementById("copy-text");
+            copyBtnText.innerText = "Copied to Clipboard!";
+            setTimeout(() => {
+                copyBtnText.innerText = "Copy README Markdown";
+            }, 2500);
+        }
+
+        // Project Modal Logic
+        function openProjectModal(key) {
+            const data = projectData[key];
+            if (!data) return;
+
+            document.getElementById("modal-title").innerText = data.title;
+            document.getElementById("modal-category").innerText = data.category;
+            
+            const iconBg = document.getElementById("modal-icon-bg");
+            iconBg.className = `w-10 h-10 rounded-xl flex items-center justify-center text-lg ${data.bg}`;
+            document.getElementById("modal-icon").className = `fas ${data.icon}`;
+
+            document.getElementById("modal-body").innerHTML = data.description;
+
+            const tagsContainer = document.getElementById("modal-tags");
+            tagsContainer.innerHTML = data.tags.map(tag => `<span class="px-2.5 py-1 rounded-md bg-dark-bg border border-gray-800 text-brand-300">${tag}</span>`).join('');
+
+            document.getElementById("project-modal").classList.remove("hidden");
+        }
+
+        function closeProjectModal() {
+            document.getElementById("project-modal").classList.add("hidden");
+        }
+
+        // Initializer on Page Load
+        window.onload = function() {
+            // Populate README raw textarea
+            const codeTextarea = document.getElementById("markdown-code");
+            codeTextarea.value = defaultReadme;
+            updateReadmePreview();
+
+            // Start typing loop
+            typeEffect();
+        };
+    </script>
+</body>
+</html>
